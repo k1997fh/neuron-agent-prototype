@@ -7,10 +7,9 @@ library; no LLM, API key, database, or installation is required.
 
 ## Run
 
-From the original repository root:
+From the repository root:
 
 ```bash
-cd neuron-agent-prototype
 python3 -m neuron_agents
 python3 -m unittest discover -s tests -v
 ```

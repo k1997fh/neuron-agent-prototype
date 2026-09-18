@@ -115,6 +115,5 @@ config = Config(parameters_b=Parameters(a=0.1, b=0.2, c=-65, d=2))
 result = NeuronWorkflow(config).run()
 ```
 
-This folder can be copied out as its own project. It imports nothing from the
-GSIS pipeline. A future LLM-based agent can consume the numerical events or
+A future LLM-based agent can consume the numerical events or
 configure experiments while keeping the equation solver deterministic.

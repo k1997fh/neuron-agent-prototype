@@ -113,6 +113,3 @@ from neuron_agents.workflow import Config, NeuronWorkflow
 config = Config(parameters_b=Parameters(a=0.1, b=0.2, c=-65, d=2))
 result = NeuronWorkflow(config).run()
 ```
-
-A future LLM-based agent can consume the numerical events or
-configure experiments while keeping the equation solver deterministic.

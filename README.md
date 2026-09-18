@@ -35,20 +35,7 @@ Each run writes `traces.csv` (voltage, recovery, input currents, spike flags),
 and `config.json` (including each neuron's parameters). Reusing an output directory
 replaces these files. All state is fresh for each run.
 
-## How the original project communicates
-
-- [`agent_definitions.py`](../src/agent_definitions.py) defines `FunctionAgent`
-  instances and `can_handoff_to` metadata, including a PlannerAgent.
-- The actual [`PlannerWorkflow`](../src/planner_workflow_definition.py) calls
-  agents directly: `query_agent` awaits QueryAgent and returns a typed
-  `QueryCompleteEvent` carrying its output. `literature_agent` consumes that
-  event and returns `LiteratureCompleteEvent`; `rag_refine_agent` consumes it,
-  calls RAGAgent, and returns a `StopEvent`.
-- The literature step currently calls retrieval functions directly; although
-  LiteratureAgent is instantiated, that step does not invoke its LLM.
-- [`timed_step`](../src/timer.py) wraps LlamaIndex's `step` decorator. Event
-  types determine which workflow step receives the output. The planner LLM's
-  handoff metadata is not what drives this execution path.
+## How the agents communicate
 
 This prototype keeps typed messages, local agent state, and explicit routing,
 implemented with dataclasses and a scheduled mailbox instead of LlamaIndex.
